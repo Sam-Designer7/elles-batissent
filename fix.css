@@ -1,0 +1,76 @@
+/* ===================================================
+   FIX.CSS — Corrections pour l'export Simply Static
+   Site : Elles Bâtissent
+   Date : Mai 2026
+   =================================================== */
+
+/* ---------------------------------------------------
+   FIX 1 : Logo dans le header
+   Problème : width="1" height="1" force le logo à 1px
+   Solution : forcer une taille correcte
+   --------------------------------------------------- */
+.site-logo,
+.site-branding img,
+.custom-logo,
+.custom-logo-link img {
+  width: auto !important;
+  height: auto !important;
+  max-height: 80px !important;
+  max-width: 200px !important;
+  display: inline-block !important;
+}
+
+/* Sur mobile, logo un peu plus petit */
+@media (max-width: 768px) {
+  .site-logo,
+  .site-branding img,
+  .custom-logo,
+  .custom-logo-link img {
+    max-height: 60px !important;
+  }
+}
+
+/* ---------------------------------------------------
+   FIX 2 : Logo dans le footer (si présent)
+   --------------------------------------------------- */
+.shfb-footer img.site-logo,
+.shfb-footer .custom-logo-link img,
+footer img[src*="logologhito"] {
+  width: auto !important;
+  height: auto !important;
+  max-height: 80px !important;
+  max-width: 200px !important;
+}
+
+/* ---------------------------------------------------
+   FIX 3 : Toutes les images avec width="1" height="1"
+   Bug WordPress sur les SVG
+   --------------------------------------------------- */
+img[width="1"][height="1"] {
+  width: auto !important;
+  height: auto !important;
+}
+
+/* SVG affichés en contenu */
+.wp-block-image img[src*=".svg"] {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* ---------------------------------------------------
+   FIX 4 : Page Devis — Masquer le message de confirmation
+   "Merci pour votre réponse" qui s'affiche à tort
+   --------------------------------------------------- */
+.wpforms-confirmation-container,
+.wpforms-confirmation-container-full,
+div[id^="wpforms-confirmation"] {
+  display: none !important;
+}
+
+/* ---------------------------------------------------
+   FIX 5 : S'assurer que les liens vers les pages internes
+   gardent leur style (au cas où)
+   --------------------------------------------------- */
+.site-branding a {
+  text-decoration: none !important;
+}
